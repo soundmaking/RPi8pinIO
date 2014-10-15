@@ -60,7 +60,7 @@ if __name__ == "__main__":
   args = parser.parse_args()
 
   dispatcher = dispatcher.Dispatcher()
-  dispatcher.map("/debug", print)
+#  dispatcher.map("/debug", print)
   dispatcher.map("/volume", print_volume_handler, "Volume")
   dispatcher.map("/logvolume", print_compute_handler, "Log volume", math.log)
   dispatcher.map("/pinout1", pinout_1_handler, "PinOut_1")
