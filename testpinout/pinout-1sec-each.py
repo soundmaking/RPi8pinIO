@@ -15,6 +15,7 @@ outpin = (8, 10, 12, 16, 18, 22, 24, 26)
 
 for p in outpin:
         GPIO.setup(p, GPIO.OUT)
+        GPIO.output(p, 1)
 
 print "each of 8 pins will switch on for 1sec in sequence"
 
@@ -25,10 +26,10 @@ i = 1
 for p in outpin:
         print "output", i, "on pin:"
         print p
-        GPIO.output(p, 1)
+        GPIO.output(p, 0)
         print "is on..."
         time.sleep(flash_on_time)
-        GPIO.output(p, 0)
+        GPIO.output(p, 1)
         print "...is off"
         time.sleep(wait_off_time)
         i = i+1
