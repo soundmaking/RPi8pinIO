@@ -47,6 +47,12 @@ def pinout_1_handler(unused_addr, args, value):
 		print("[{0}] ~ {1}".format(args[0], value))
 
 
+def kill_it(unused_addr, args, val):
+	if val == 1:
+		if devmode:
+			print("going to kill it...")
+		GPIO.cleanup()
+		server.shutdown()
 
 	
 
@@ -65,11 +71,11 @@ if __name__ == "__main__":
   dispatcher.map("/logvolume", print_compute_handler, "Log volume", math.log)
   dispatcher.map("/pinout1", pinout_1_handler, "PinOut_1")
 
+
+  dispatcher.map("/killit", kill_it, "Kill")
+
   server = osc_server.ThreadingOSCUDPServer(
       (args.ip, args.port), dispatcher)
   print("Serving on {}".format(server.server_address))
   server.serve_forever()
 
-# how to make it not forever?
-# would want to end with:
-# GPIO.cleanup()
