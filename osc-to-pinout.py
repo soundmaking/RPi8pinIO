@@ -22,6 +22,10 @@ GPIO.setmode(GPIO.BOARD)
 # 3p _3 _5 _7 Gd 11 13 15 3p 19 21 24 Gd #
 # -------------------------------------- #
 
+
+#           1  2  3     4  5     6  7  8 # 
+#  |  |  |  |  |  |  |  |  |  |  |  |  | #
+# 5v 3p Gd _8 10 12 Gd 16 18 Gd 22 24 26 #
 outpin = (8, 10, 12, 16, 18, 22, 24, 26)
 
 for p in outpin:
@@ -34,7 +38,7 @@ def set_relay(pin_, val_):
     v = 1
   else:
     v = 0
-  GPIO.output(outpin(pin_), v)
+  GPIO.output(outpin[pin_-1], v)
 
 def pinout_1_handler(unused_addr, args, value):
 	set_relay(1, value)
