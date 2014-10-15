@@ -1,13 +1,19 @@
+""" python3
+	coding
+	by sdf
+	soundmaking.co.uk
+"""
+devmode = True
+
+import RPi.GPIO as GPIO
+import time
+
 import argparse
 import math
 
 from pythonosc import dispatcher
 from pythonosc import osc_server
 
-
-
-import RPi.GPIO as GPIO
-import time
 
 GPIO.setmode(GPIO.BOARD)
 #  Pin Map - Power, Ground, and GPIO     #
@@ -20,28 +26,19 @@ outpin = (8, 10, 12, 16, 18, 22, 24, 26)
 
 for p in outpin:
         GPIO.setup(p, GPIO.OUT)
+        GPIO.output(p, 1)
 
 
-
-devmode = True
-
-def print_volume_handler(unused_addr, args, volume):
-  print("[{0}] ~ {1}".format(args[0], volume))
-
-def print_compute_handler(unused_addr, args, volume):
-  try:
-    print("[{0}] ~ {1}".format(args[0], args[1](volume)))
-  except ValueError: pass
-
-
-
+def set_relay(pin_, val_):
+  if val_ == 0:
+    v = 1
+  else:
+    v = 0
+  GPIO.output(outpin(pin_), v)
 
 def pinout_1_handler(unused_addr, args, value):
 	p = 1
-	if value == 0:
-		v = 0
-	else:
-		v = 1
+
 	GPIO.output(p, v)	
 	if devmode:
 		print("[{0}] ~ {1}".format(args[0], value))
@@ -50,11 +47,9 @@ def pinout_1_handler(unused_addr, args, value):
 def kill_it(unused_addr, args, val):
 	if val == 1:
 		if devmode:
-			print("going to kill it...")
+			print("shutting down...")
 		GPIO.cleanup()
 		server.shutdown()
-
-	
 
 
 if __name__ == "__main__":
