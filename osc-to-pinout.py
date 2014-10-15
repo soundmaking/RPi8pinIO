@@ -37,11 +37,16 @@ def set_relay(pin_, val_):
   GPIO.output(outpin(pin_), v)
 
 def pinout_1_handler(unused_addr, args, value):
-	p = 1
+	set_relay(1, value)
 
-	GPIO.output(p, v)	
-	if devmode:
-		print("[{0}] ~ {1}".format(args[0], value))
+def pinout_2_handler(unused_addr, args, value):
+	set_relay(2, value)
+
+def pinout_3_handler(unused_addr, args, value):
+	set_relay(3, value)
+
+def pinout_4_handler(unused_addr, args, value):
+	set_relay(4, value)
 
 
 def kill_it(unused_addr, args, val):
