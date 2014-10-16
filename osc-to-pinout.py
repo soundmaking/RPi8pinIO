@@ -71,9 +71,12 @@ if __name__ == "__main__":
 
   dispatcher = dispatcher.Dispatcher()
   dispatcher.map("/debug", print)
-  dispatcher.map("/volume", print_volume_handler, "Volume")
-  dispatcher.map("/logvolume", print_compute_handler, "Log volume", math.log)
+#  dispatcher.map("/volume", print_volume_handler, "Volume")
+#  dispatcher.map("/logvolume", print_compute_handler, "Log volume", math.log)
   dispatcher.map("/pinout1", pinout_1_handler, "PinOut_1")
+  dispatcher.map("/pinout2", pinout_2_handler, "PinOut_2")
+  dispatcher.map("/pinout3", pinout_3_handler, "PinOut_3")
+  dispatcher.map("/pinout4", pinout_4_handler, "PinOut_4")
 
 
   dispatcher.map("/killit", kill_it, "Kill")
