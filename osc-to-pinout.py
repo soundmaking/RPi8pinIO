@@ -28,21 +28,17 @@ GPIO.setmode(GPIO.BOARD)
 # 3p _3 _5 _7 Gd 11 13 15 3p 19 21 24 Gd #
 # -------------------------------------- #
 
-# added but not tested 1 of 3 (changed pin out mapping)
 
-#           8  7  6     5  4     3  2  1 # 
+# Vcc       8  7  6     5  4     3  2  1 # <- To Relay Board
 #  |  |  |  |  |  |  |  |  |  |  |  |  | #
-# 5v 3p Gd _8 10 12 Gd 16 18 Gd 22 24 26 #
+# 5v 3p Gd _8 10 12 Gd 16 18 Gd 22 24 26 # <- GPIO on
+# 3p _3 _5 _7 Gd 11 13 15 3p 19 21 24 Gd # <- the RPi
+# |  |  |  |  |  |  |  |  |  |  |  |  |  # 
+#                                    Gnd # <- To Relay Board
 
 outpin = (26, 24, 22, 18, 16, 12, 10, 8)
 
-# end of added but not tested 1 of 3 : comment below to test above """
-""""
-#           1  2  3     4  5     6  7  8 # 
-#  |  |  |  |  |  |  |  |  |  |  |  |  | #
-# 5v 3p Gd _8 10 12 Gd 16 18 Gd 22 24 26 #
-outpin = (8, 10, 12, 16, 18, 22, 24, 26)
-"""
+
 for p in outpin:
         GPIO.setup(p, GPIO.OUT)
         GPIO.output(p, 1)
@@ -70,7 +66,7 @@ def pinout_4_handler(unused_addr, args, value):
 
 
 
-""" # added but not tested 2 of 3 
+#""" # added but not tested 2 of 3 
 def pinout_5_handler(unused_addr, args, value):
 	set_relay(5, value)
 
@@ -112,7 +108,7 @@ if __name__ == "__main__":
   dispatcher.map("/pinout3", pinout_3_handler, "PinOut_3")
   dispatcher.map("/pinout4", pinout_4_handler, "PinOut_4")
 
-  """ # added but not tested 3 of 3 
+#  """ # added but not tested 3 of 3 
   dispatcher.map("/pinout5", pinout_5_handler, "PinOut_5")
   dispatcher.map("/pinout6", pinout_6_handler, "PinOut_6")
   dispatcher.map("/pinout7", pinout_7_handler, "PinOut_7")
