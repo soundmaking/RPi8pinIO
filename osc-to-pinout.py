@@ -28,7 +28,7 @@ GPIO.setmode(GPIO.BOARD)
 # 3p _3 _5 _7 Gd 11 13 15 3p 19 21 24 Gd #
 # -------------------------------------- #
 
-""" added but not tested 1 of 3 (changed pin out mapping)
+# added but not tested 1 of 3 (changed pin out mapping)
 
 #           8  7  6     5  4     3  2  1 # 
 #  |  |  |  |  |  |  |  |  |  |  |  |  | #
@@ -37,12 +37,12 @@ GPIO.setmode(GPIO.BOARD)
 outpin = (26, 24, 22, 18, 16, 12, 10, 8)
 
 # end of added but not tested 1 of 3 : comment below to test above """
-
+""""
 #           1  2  3     4  5     6  7  8 # 
 #  |  |  |  |  |  |  |  |  |  |  |  |  | #
 # 5v 3p Gd _8 10 12 Gd 16 18 Gd 22 24 26 #
 outpin = (8, 10, 12, 16, 18, 22, 24, 26)
-
+"""
 for p in outpin:
         GPIO.setup(p, GPIO.OUT)
         GPIO.output(p, 1)
