@@ -28,25 +28,14 @@ GPIO.setmode(GPIO.BOARD)
 # 3p _3 _5 _7 Gd 11 13 15 3p 19 21 24 Gd #
 # -------------------------------------- #
 
-""" # maping v.2
-# Vcc       8  7  6     5  4     3  2  1 # <- To Relay Board
+# mapping v.3 
+#
+# Vcc   Gnd                              # <- To Relay Board
 #  |  |  |  |  |  |  |  |  |  |  |  |  | #
 # 5v 3p Gd _8 10 12 Gd 16 18 Gd 22 24 26 # <- GPIO on
 # 3p _3 _5 _7 Gd 11 13 15 3p 19 21 24 Gd # <- the RPi
 # |  |  |  |  |  |  |  |  |  |  |  |  |  # 
-#                                    Gnd # <- To Relay Board
-
-outpin = (26, 24, 22, 18, 16, 12, 10, 8)
-# """
-
-
-# mapping v.3 WORK IN PROGRESS * * * * * * * * * * * * * * * * * * * * * * *
-# Vcc                                    # <- To Relay Board
-#  |  |  |  |  |  |  |  |  |  |  |  |  | #
-# 5v 3p Gd _8 10 12 Gd 16 18 Gd 22 24 26 # <- GPIO on
-# 3p _3 _5 _7 Gd 11 13 15 3p 19 21 24 Gd # <- the RPi
-# |  |  |  |  |  |  |  |  |  |  |  |  |  # 
-#    1  2  3     4  5  6     7  8    Gnd # <- To Relay Board
+#    1  2  3     4  5  6     7  8        # <- To Relay Board
 
 outpin = (3, 5, 7, 11, 13, 15, 19, 21)
 
