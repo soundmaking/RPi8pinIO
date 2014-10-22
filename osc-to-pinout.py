@@ -47,8 +47,12 @@ for p in outpin:
 def set_relay(pin_, val_):
   if val_ == 0:
     v = 1
+    if devmode:
+      print("pin {} off".format(pin_))
   else:
     v = 0
+    if devmode:
+      print("pin {} on".format(pin_))
   GPIO.output(outpin[pin_-1], v)
 
 
